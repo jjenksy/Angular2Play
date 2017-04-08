@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
+import {Customer, Address} from "./model";
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',//<my-app> html to use the component
-  templateUrl: 'app/template/default.view.html'//template url for the view
+  templateUrl: 'template/default.view.html',//template url for the view id using module.id it will look for the template from this module
+  styleUrls: ['app.component.css']
 })
 export class AppComponent  {
-  name = 'Jenkins';
-  image = 'favicon.ico';
-  color = 'red';
-  street = 'Beechnut';
-  city = 'Houston';
-  region ="U.S.";
+
+
   hideAddress = false;
+  color = 'red';
+  customer : Customer = new Customer(1,"John", "favicon.ico", new Address("Beechnut", "Houston", "South", "Tx"));
 
   colorChange(){
     this.color = this.color === 'red' ? 'blue':'red';
@@ -19,13 +20,5 @@ export class AppComponent  {
 
   selectColorChange(color: string){
     this.color = color;
-  }
-
-  addressClick(){
-    this.hideAddress = !this.hideAddress;
-  }
-
-  selectRegionChange(region: string){
-    this.region = region;
   }
 }

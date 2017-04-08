@@ -1,17 +1,16 @@
-<h1>{{name}}</h1>
-<p><i>{{name}} is in the {{region}} region.</i></p>
+<h1>{{customer.name}}</h1>
+<p><i>{{customer.name}} is in the {{customer.address.region}} region.</i></p>
 <div [hidden]="hideAddress">
-  <h6>{{street}}</h6>
-  <h6>{{city}}</h6>
+  <h6>{{customer.address.street}}</h6>
+  <h6>{{customer.address.city}}</h6>
 </div>
-  <button (click)="addressClick()">Show Hide Address</button>
-<br/>
-
-<input [(ngModel)]="name">
+<label>Name: <input [(ngModel)]="customer.name"></label>
+<label>Street: <input [(ngModel)]="customer.address.street">/<label>
+<label>City: <input [(ngModel)]="customer.address.city"></label>
 <br/>
 <fieldset>
   <label>Change region</label>
-  <select (change)="selectRegionChange($event.target.value)">
+  <select [(ngModel)]="customer.address.region">
     <option>north</option>
     <option>south</option>
     <option>east</option>
@@ -19,7 +18,7 @@
   </select>
 </fieldset>
 <fieldset>
-  <img [src]="image"/>
+  <img [src]="customer.image"/>
 </fieldset>
 <label [style.color] ="color">Color to Change</label>
 <button (click)="colorChange()">Toggle Color</button>
