@@ -1,0 +1,30 @@
+<h1>{{name}}</h1>
+<p><i>{{name}} is in the {{region}} region.</i></p>
+<div [hidden]="hideAddress">
+  <h6>{{street}}</h6>
+  <h6>{{city}}</h6>
+</div>
+  <button (click)="addressClick()">Show Hide Address</button>
+<br/>
+
+<input [(ngModel)]="name">
+<br/>
+<fieldset>
+  <label>Change region</label>
+  <select (change)="selectRegionChange($event.target.value)">
+    <option>north</option>
+    <option>south</option>
+    <option>east</option>
+    <option>west</option>
+  </select>
+</fieldset>
+<fieldset>
+  <img [src]="image"/>
+</fieldset>
+<label [style.color] ="color">Color to Change</label>
+<button (click)="colorChange()">Toggle Color</button>
+<select (change)="selectColorChange($event.target.value)">
+  <option>red</option>
+  <option>blue</option>
+  <option>green</option>
+</select>
