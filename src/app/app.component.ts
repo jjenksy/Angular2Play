@@ -1,24 +1,13 @@
-import { Component } from '@angular/core';
-import {Customer, Address} from "./model";
+import {Component} from "@angular/core";
+/**
+ * Created by jenksy on 4/9/17.
+ */
+
 
 @Component({
-  moduleId: module.id,
-  selector: 'my-app',//<my-app> html to use the component
-  templateUrl: 'template/default.view.html',//template url for the view id using module.id it will look for the template from this module
-  styleUrls: ['app.component.css']
+  selector: 'my-app',
+  template: `
+    <h1>{{title}}</h1>
+    <customer-list></customer-list>`
 })
-export class AppComponent  {
-
-
-  hideAddress = false;
-  color = 'red';
-  customer : Customer = new Customer(1,"John", "favicon.ico", new Address("Beechnut", "Houston", "South", "Tx"));
-
-  colorChange(){
-    this.color = this.color === 'red' ? 'blue':'red';
-  }
-
-  selectColorChange(color: string){
-    this.color = color;
-  }
-}
+export class AppComponent  { title = 'Customer Management'; }
