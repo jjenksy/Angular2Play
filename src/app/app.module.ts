@@ -5,6 +5,8 @@ import {AppComponent} from "./app.component";
 import {AddressComponent} from "./address.component";
 import {CustomerListComponent} from "./customer-list.component";
 import {CustomerDetailComponent} from "./customer-detail.component";
+import {DataService} from "./data.service";
+import {LoggerService} from "./logger.service";
 /**
  * Created by jenksy on 4/9/17.
  */
@@ -19,6 +21,7 @@ import {CustomerDetailComponent} from "./customer-detail.component";
     CustomerDetailComponent,
     CustomerListComponent
   ],
+  providers :[DataService, LoggerService],//providers is for services
   bootstrap: [ AppComponent ] // Where do I start?
 })
 export class AppModule { }

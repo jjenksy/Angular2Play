@@ -1,5 +1,7 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Customer} from "./model";
+import {DataService} from "./data.service";
+import {LoggerService} from "./logger.service";
 /**
  * Created by jenksy on 4/9/17.
  */
@@ -10,52 +12,19 @@ import {Customer} from "./model";
   styleUrls: ['customer-list.component.css']
 })
 
-export class CustomerListComponent  {
+export class CustomerListComponent implements OnInit {
 
   customer: Customer;
 
-  customers: Customer[] = [
-    {
-      id:       1,
-      name:    'Alex Smith',
-      address: {
-        street:  '123 Main Street',
-        city:    'Anytown',
-        state:   'California',
-        region:  'West'
-      }
-    },
-    {
-      id:       2,
-      name:    'Pierre Pasmal',
-      address: {
-        street:  '456 Rue de Main',
-        city:    'Quebec City',
-        state:   'Quebec',
-        region:  'East'
-      }
-    },
-    {
-      id:       3,
-      name:    'Margarita Nadie',
-      address: {
-        street:  '789 Calle Principal',
-        city:    'Guadalajara',
-        state:   'Jalisco',
-        region:  'South'
-      }
-    },
-    {
-      id:       4,
-      name:    'Katie O\'Leary',
-      address: {
-        street:  '137 DeKoven Street',
-        city:    'Chicago',
-        state:   'Illinois',
-        region:  'Midwest'
-      }
-    },
-  ];
+  customers: Customer[];
+
+  constructor(private dataService : DataService, private loggerService : LoggerService){}
+
+  //called by angular
+  ngOnInit(){
+    this.customers = this.dataService.getCustomers();
+    this.loggerService.log("Getting customers...");
+  }
 
   shift(increment:number){
     let ix =this.customers.findIndex(c=> c === this.customer) + increment;
