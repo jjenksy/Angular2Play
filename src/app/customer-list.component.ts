@@ -29,11 +29,14 @@ export class CustomerListComponent implements OnInit {
 
   getCustomer(){
     this.isBusy = true;
-    // this.dataService.getCustomersP().then(res=>{
+     // this.dataService.getCustomersP().then(res=>{
     this.dataService.getCustomers().subscribe(res=>{
       this.isBusy = false;
       this.customers = res;
-    })
+    }, (errorMsg: string)=>{
+       this.isBusy =false;
+
+     });
     this.loggerService.log("Getting customers...");
   }
 
